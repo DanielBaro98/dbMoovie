@@ -1,0 +1,38 @@
+.card {
+  background-color: #22272e;
+  border-radius: 12px;
+  overflow: hidden;
+  height: 100%;
+  transition: transform 0.2s ease;
+}
+.card:hover {
+  transform: translateY(-5px);
+}
+.poster {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 2/3;
+  object-fit: cover;
+}
+.info {
+  padding: 16px;
+}
+
+.title {
+  font-size: 1.2rem;
+  line-height: 1.4;
+  margin: 0 0 8px;
+  color: white;
+}
+
+.year {
+  font-size: 0.95rem;
+  color: #c7b25f;
+  margin: 0 0 8px;
+}
+.rating {
+  font-size: 0.95rem;
+  color: #c7b25f;
+  margin: 0;
+}
