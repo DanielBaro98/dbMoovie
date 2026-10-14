@@ -1,0 +1,19 @@
+.main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 32px 20px;
+}
+
+.heading {
+  margin-bottom: 12px;
+}
+
+.description {
+  margin-bottom: 32px;
+}
+
+.movieGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+  gap: 20px;
+}

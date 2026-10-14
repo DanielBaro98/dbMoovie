@@ -4,6 +4,17 @@ const nextConfig: NextConfig = {
   turbopack: {
     root: process.cwd(),
   },
+
+  // bilder fra TMDB
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "image.tmdb.org",
+        pathname: "/t/p/**",
+      },
+    ],
+  },
 };
 
 export default nextConfig;
