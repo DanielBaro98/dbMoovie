@@ -1,5 +1,5 @@
 import "server-only";
-import type { MovieResponse } from "@/app/types/movie";
+import type { MovieDetails, MovieResponse } from "@/app/types/movie";
 
 export async function getPopularMovies(): Promise<MovieResponse> {
   const url = "https://api.themoviedb.org/3/movie/popular";
@@ -19,6 +19,50 @@ export async function getPopularMovies(): Promise<MovieResponse> {
 
   if (!response.ok) {
     throw new Error(`Kunne ikke hente filmer: ${response.status}`);
+  }
+  const data: MovieResponse = await response.json();
+  return data;
+}
+
+export async function getMovieById(id: string): Promise<MovieDetails> {
+  const url = `https://api.themoviedb.org/3/movie/${encodeURIComponent(id)}`;
+
+  const token = process.env.TMDB_ACCESS_TOKEN;
+  if (!token) {
+    throw Error("TMDB-nøkkel mangler");
+  }
+  const response = await fetch(url, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+      Accept: "application/json",
+    },
+  });
+  if (response.status === 404) {
+    throw new Error("Filmen finnes ikke");
+  }
+  if (!response.ok) {
+    throw new Error(`Kunne ikke hente film: ${response.status}`);
+  }
+  const data: MovieDetails = await response.json();
+  return data;
+}
+
+export async function getSimilarMovies(id: string): Promise<MovieResponse> {
+    // liten endring fra similar endepunkt til recommendation pga treff -> burde endre function navn
+  const url = `https://api.themoviedb.org/3/movie/${encodeURIComponent(id)}/recommendations`;
+  const token = process.env.TMDB_ACCESS_TOKEN;
+
+  if (!token) {
+    throw new Error("TMDB-nøkkel mangler");
+  }
+  const response = await fetch(url, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+      Accept: "application/json",
+    },
+  });
+  if (!response.ok) {
+    throw new Error(`Kunne ikke hente lignende filmer: ${response.status}`);
   }
   const data: MovieResponse = await response.json();
   return data;
