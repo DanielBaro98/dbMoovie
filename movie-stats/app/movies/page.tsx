@@ -6,29 +6,16 @@ import styles from "./Movies.module.css";
 export default async function Home() {
   const data = await getPopularMovies();
 
-  const featuredMovies = data.results.slice(0, 4);
-
   return (
     <main className={styles.main}>
-      <section className={styles.hero}>
-        <h1> Movie Stats</h1>
+      <h1 className={styles.heading}> Populære filmer</h1>
 
-        <p className={styles.description}>Oppdag populære filmer, utforsk filmdetaljer og finn din neste filmopplevelse</p>
-
-        <Link href="./movies" className={styles.button}>
-          Utforsk populære filmer{" "}
-        </Link>
-      </section>
-      <section className={styles.featuredSection} aria-labelledby="featured-headiong">
-        <h2 id="featured-headig" className={styles.sectionTitle}>
-          Populære filmer akkurat nå
-        </h2>
-        <div className={styles.movieGrid}>
-          {featuredMovies.map((movie) => (
+      <p className={styles.description}>Utforsk populære filmer og finn dine favoritter.</p>
+        <section className={styles.movieGrid} aria-label="Liste over populære filmer">
+          {data.results.map((movie)=>(
             <MovieCard key={movie.id} movie={movie} />
           ))}
-        </div>
-      </section>
+        </section>
     </main>
   );
 }
