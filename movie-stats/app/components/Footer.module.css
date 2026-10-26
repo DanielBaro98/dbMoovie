@@ -1,0 +1,38 @@
+.footer {
+  background-color: #141414;
+  border-top: 1px solid #facc15;
+  margin-top: 64px;
+}
+.content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 32px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.content p {
+  margin: 0;
+}
+
+.content a {
+  color: #facc15;
+  text-decoration: none;
+}
+
+.content a:hover {
+  text-decoration: underline;
+}
+.content a:focus-visible {
+  outline: 3px solid #ff1f1f;
+  outline-offset: 4px;
+}
+
+@media (max-width: 600px) {
+  .content {
+    flex-direction: column;
+    text-align: center;
+  }
+}

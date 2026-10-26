@@ -1,26 +1,33 @@
-import { getPopularMovies, getMovieById } from "@/app/lib/tmdb";
-import MovieCard from "./components/MovieCard";
+import Link from "next/link";
+import { getPopularMovies } from "@/app/lib/tmdb";
+import MovieCard from "@/app/components/MovieCard";
 import styles from "./page.module.css";
 
 export default async function Home() {
   const data = await getPopularMovies();
-  /*
-  const firstMovie = data.results[0];
 
-  if (firstMovie){
-    const movieDetails = await getMovieById(String(firstMovie.id));
-    console.log("filmdetajler:", movieDetails)
-  }
-*/
+  const featuredMovies = data.results.slice(0, 4);
+
   return (
     <main className={styles.main}>
-      <h1 className={styles.heading}>Populære Filmer</h1>
-      <p className={styles.description}>Utforsk populære filmer og finn dine favoritter</p>
-    
-      <section className={styles.movieGrid} aria-label="Liste med populære filmer">
-        {data.results.map((movie) => (
-          <MovieCard key={movie.id} movie={movie} />
-        ))}
+      <section className={styles.hero}>
+        <h1> Movie Stats</h1>
+
+        <p className={styles.description}>Oppdag populære filmer, utforsk filmdetaljer og finn din neste filmopplevelse</p>
+
+        <Link href="./movies" className={styles.button}>
+          Utforsk populære filmer{" "}
+        </Link>
+      </section>
+      <section className={styles.featuredSection} aria-labelledby="featured-heading">
+        <h2 id="featured-heading" className={styles.sectionTitle}>
+          Populære filmer akkurat nå
+        </h2>
+        <div className={styles.movieGrid}>
+          {featuredMovies.map((movie) => (
+            <MovieCard key={movie.id} movie={movie} />
+          ))}
+        </div>
       </section>
     </main>
   );
