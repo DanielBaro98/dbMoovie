@@ -11,8 +11,8 @@ export default function Header() {
 
         <div className={styles.links}>
           <Link href="/">Hjem</Link>
-          <Link href="/">Filmer</Link>
-          <Link href="/">Om Oss</Link>
+          <Link href="/movies">Filmer</Link>
+          <Link href="/about">Om Oss</Link>
         </div>
       </nav>
     </header>

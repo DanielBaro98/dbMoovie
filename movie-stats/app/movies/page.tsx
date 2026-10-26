@@ -15,9 +15,9 @@ export default async function Home() {
 
         <p className={styles.description}>Oppdag populære filmer, utforsk filmdetaljer og finn din neste filmopplevelse</p>
 
-        <link href="./movies" className={styles.button}>
+        <Link href="./movies" className={styles.button}>
           Utforsk populære filmer{" "}
-        </link>
+        </Link>
       </section>
       <section className={styles.featuredSection} aria-labelledby="featured-headiong">
         <h2 id="featured-headig" className={styles.sectionTitle}>
