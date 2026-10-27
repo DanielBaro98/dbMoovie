@@ -21,7 +21,7 @@ export default async function Home() {
       </section>
       <section className={styles.featuredSection} aria-labelledby="featured-heading">
         <h2 id="featured-heading" className={styles.sectionTitle}>
-          Populære filmer akkurat nå
+          Filmene alle ser på nå
         </h2>
         <div className={styles.movieGrid}>
           {featuredMovies.map((movie) => (
