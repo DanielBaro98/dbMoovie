@@ -7,6 +7,7 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ q
   const { query } = await searchParams;
 
   const data = query?.trim() ? await searchMovies(query) : await getPopularMovies();
+  //throw new Error("Test av feilside");
 
   return (
     <main className={styles.main}>

@@ -23,7 +23,7 @@ export default async function MoviePage({ params }: MoviePageProps) {
   try {
     movie = await getMovieById(id);
   } catch (error) {
-    if (error instanceof Error && error.message === "Filmen finnes ikke") {
+    if (error instanceof Error && error.message === "MOVIE_NOT_FOUND") {
       notFound();
     }
     throw error;
@@ -65,7 +65,7 @@ export default async function MoviePage({ params }: MoviePageProps) {
       </article>
       <section className={styles.similarSection} aria-label="similar-heading">
         <h2 id="similar-heading" className={styles.heading}>
-          Lignende filmer 
+          Lignende filmer
         </h2>
         {similarMovies.length > 0 ? (
           <div className={styles.similarGrid}>
