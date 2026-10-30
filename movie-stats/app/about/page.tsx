@@ -1,4 +1,5 @@
 import styles from "./About.module.css";
+import Image from "next/image";
 
 export default function AboutPage() {
   return (
@@ -18,7 +19,11 @@ export default function AboutPage() {
       </section>
       <section className={styles.section}>
         <h2>Om prosjektet</h2>
-        <p>Movie er utviklet av Daniel Barø. Delinnlevering 2 med Next.js og TypeScript.</p>
+        <p>Movie-Stats er utviklet av Daniel Barø. Delinnlevering 2 med Next.js og TypeScript.</p>
+      </section>
+      <section className={styles.section}>
+        <Image src="/tmdb-logo.svg" alt="The Movie Database (TMDB)" width={180} height={80}></Image>
+        <p> This product uses the TMDB API but is not endorsed or certified by TMDB</p>
       </section>
     </main>
   );

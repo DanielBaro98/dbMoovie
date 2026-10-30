@@ -1,0 +1,26 @@
+.main {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 100px 20px;
+  text-align: center;
+}
+
+.button {
+  margin-top: 24px;
+  padding: 12 24px;
+  background-color: #facc15;
+  color: black;
+  border: none;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.button:hover {
+  background-color: #fde047;
+}
+
+.button:focus-visible {
+  outline: 3px solid white;
+  outline-offset: 3px;
+}

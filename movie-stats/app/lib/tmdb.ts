@@ -38,7 +38,7 @@ export async function getMovieById(id: string): Promise<MovieDetails> {
     },
   });
   if (response.status === 404) {
-    throw new Error("Filmen finnes ikke");
+    throw new Error("MOVIE_NOT_FOUND");
   }
   if (!response.ok) {
     throw new Error(`Kunne ikke hente film: ${response.status}`);
@@ -48,7 +48,7 @@ export async function getMovieById(id: string): Promise<MovieDetails> {
 }
 
 export async function getSimilarMovies(id: string): Promise<MovieResponse> {
-    // liten endring fra similar endepunkt til recommendation pga treff -> burde endre function navn
+  // liten endring fra similar endepunkt til recommendation pga treff -> burde endre function navn
   const url = `https://api.themoviedb.org/3/movie/${encodeURIComponent(id)}/recommendations`;
   const token = process.env.TMDB_ACCESS_TOKEN;
 
@@ -68,30 +68,26 @@ export async function getSimilarMovies(id: string): Promise<MovieResponse> {
   return data;
 }
 
-export async function searchMovies(query: string): Promise<MovieResponse>{
-
-  const trimmedQuery = query = query.trim();
-  if (trimmedQuery === ""){
+export async function searchMovies(query: string): Promise<MovieResponse> {
+  const trimmedQuery = query.trim();
+  if (trimmedQuery === "") {
     return {
-      page:1,
+      page: 1,
       results: [],
       total_pages: 0,
       total_results: 0,
     };
   }
-  const searchQuery = encodeURIComponent(query.trim());
+  const searchQuery = encodeURIComponent(trimmedQuery);
 
-  const response = await fetch(`https://api.themoviedb.org/3/search/movie?query=${searchQuery}&language=en-US`,
-    {
-      headers: {
-        Authorization: `Bearer ${process.env.TMDB_ACCESS_TOKEN}`,
-        accept: "application/json"
-      },
-    }
-  );
-  if (!response.ok){
+  const response = await fetch(`https://api.themoviedb.org/3/search/movie?query=${searchQuery}&language=en-US`, {
+    headers: {
+      Authorization: `Bearer ${process.env.TMDB_ACCESS_TOKEN}`,
+      accept: "application/json",
+    },
+  });
+  if (!response.ok) {
     throw new Error("Kunne ikke søke etter film");
   }
   return response.json();
-
 }

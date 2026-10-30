@@ -1,0 +1,24 @@
+.main {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 100px 20px;
+  text-align: center;
+}
+
+.backLink {
+  display: inline-block;
+  width: fit-content;
+  padding: 10px 16px;
+  margin-bottom: 24px;
+  color: #c7b25f;
+  border: 1px solid #fde047;
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+.backLink:hover {
+  background-color: #fde047;
+  color: black;
+}
