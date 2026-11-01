@@ -36,7 +36,7 @@ export default async function MoviePage({ params }: MoviePageProps) {
   return (
     <main className={styles.main}>
       <h1 className={styles.title}>{movie.title}</h1>
-      <Link href="/" className={styles.backLink}>
+      <Link href="/movies" className={styles.backLink}>
         ← Tilbake til filmer
       </Link>
       <article className={styles.movieDetails}>
@@ -63,7 +63,7 @@ export default async function MoviePage({ params }: MoviePageProps) {
           )}
         </div>
       </article>
-      <section className={styles.similarSection} aria-label="similar-heading">
+      <section className={styles.similarSection} aria-labelledby="similar-heading">
         <h2 id="similar-heading" className={styles.heading}>
           Lignende filmer
         </h2>

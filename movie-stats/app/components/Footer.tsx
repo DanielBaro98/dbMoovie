@@ -8,7 +8,7 @@ export default function Footer() {
         <p>2026© Movie Stats. Delinnlevering 2</p>
         <p>
           Filmdata fra{" "}
-          <a href="https://www.themoviedb.org/" target="__blank" rel="nooopener noreferrer">
+          <a href="https://www.themoviedb.org/" target="_blank" rel="noopener noreferrer">
             TMDB
           </a>
         </p>
