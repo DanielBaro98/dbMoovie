@@ -70,6 +70,7 @@ export async function getSimilarMovies(id: string): Promise<MovieResponse> {
 
 export async function searchMovies(query: string): Promise<MovieResponse> {
   const trimmedQuery = query.trim();
+
   if (trimmedQuery === "") {
     return {
       page: 1,
@@ -78,11 +79,18 @@ export async function searchMovies(query: string): Promise<MovieResponse> {
       total_results: 0,
     };
   }
+
+  const token = process.env.TMDB_ACCESS_TOKEN;
+
+  if (!token) {
+    throw new Error("TMDB-nøkkel mangler");
+  }
+  
   const searchQuery = encodeURIComponent(trimmedQuery);
 
   const response = await fetch(`https://api.themoviedb.org/3/search/movie?query=${searchQuery}&language=en-US`, {
     headers: {
-      Authorization: `Bearer ${process.env.TMDB_ACCESS_TOKEN}`,
+      Authorization: `Bearer ${token}`,
       accept: "application/json",
     },
   });

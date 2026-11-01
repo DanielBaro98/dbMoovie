@@ -11,7 +11,7 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ q
 
   return (
     <main className={styles.main}>
-      <h1 className={styles.heading}> Populære filmer</h1>
+      <h1 className={styles.heading}>Populære filmer</h1>
 
       <p className={styles.description}>Utforsk populære filmer og finn dine favoritter.</p>
       <form action="/movies" method="GET" className={styles.searchForm}>
@@ -26,9 +26,7 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ q
         </Link>
       )}
       <section className={styles.movieGrid} aria-label="Liste over populære filmer">
-        {data.results.map((movie) => (
-          <MovieCard key={movie.id} movie={movie} />
-        ))}
+        {data.results.length === 0 ? <p>Ingen filmer funnet. Prøv et annet søk.</p> : data.results.map((movie) => <MovieCard key={movie.id} movie={movie} />)}
       </section>
     </main>
   );
